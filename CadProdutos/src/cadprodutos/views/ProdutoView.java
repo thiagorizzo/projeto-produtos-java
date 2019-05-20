@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,12 +25,17 @@ public class ProdutoView extends javax.swing.JFrame {
     /**
      * Creates new form Produto
      */
-    public ProdutoView() throws ClassNotFoundException, SQLException {
-        tipo = new TipoProdutoController();
-        initComponents();
-        atualizaTipos();
-        
+    public ProdutoView() {
+        try
+        {
+            tipo = new TipoProdutoController();
+            initComponents();
+            atualizaTipos();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Erro", ERROR);
+        }            
     }
+    
     private void atualizaTipos() throws SQLException{
         ArrayList<TipoProduto> tipos = tipo.Listar();
         lstTipo.removeAllItems();
@@ -143,13 +149,11 @@ public class ProdutoView extends javax.swing.JFrame {
       TipoProduto tipo = new TipoProduto();
       tipo.setCodigo(lstTipo.getSelectedIndex() + 1);
       novo.setTipo(tipo);
-      ProdutoController pc = new ProdutoController();
         try {
+            ProdutoController pc = new ProdutoController();
             pc.Inserir(novo);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Erro", ERROR);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -184,13 +188,7 @@ public class ProdutoView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new ProdutoView().setVisible(true);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ProdutoView.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new ProdutoView().setVisible(true);
             }
         });
     }

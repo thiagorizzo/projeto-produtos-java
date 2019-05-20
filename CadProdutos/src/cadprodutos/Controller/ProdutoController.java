@@ -6,7 +6,12 @@ import java.sql.SQLException;
 
 public class ProdutoController 
 {
-    ProdutoDao produtoDao = new ProdutoDao();
+    private ProdutoDao produtoDao;
+    
+    public ProdutoController() throws ClassNotFoundException, SQLException {
+        produtoDao = new ProdutoDao();
+    }
+    
     public void Inserir(Produto p) throws ClassNotFoundException, SQLException
     {
         produtoDao.Inserir(p);
