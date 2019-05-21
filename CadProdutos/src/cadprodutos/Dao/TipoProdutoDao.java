@@ -1,6 +1,7 @@
 package cadprodutos.Dao;
 
 import cadprodutos.models.TipoProduto;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,5 +22,13 @@ public class TipoProdutoDao extends BaseDao {
             tipoprodutos.add(tp);
         }
         return tipoprodutos;
+    }
+
+    public void Inserir(TipoProduto novo) throws ClassNotFoundException, SQLException {
+        Connection conexao = Database.getConexao();
+        PreparedStatement ps = conexao.prepareStatement("Insert into TipoProduto(Nome)"
+                + "Values (?)");
+        ps.setString(1, novo.getNome());
+        ps.executeUpdate();       
     }
 }

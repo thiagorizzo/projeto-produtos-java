@@ -1,13 +1,15 @@
 package cadprodutos;
 
+import cadprodutos.views.Aplicacao;
 import cadprodutos.views.ProdutoView;
+import cadprodutos.views.TipoProdutoView;
 
 public class CadProdutos
 {
     public static void main(String[] args)
     {
-       ProdutoView produtoView = new ProdutoView();
-       produtoView.show();
+        Aplicacao aplicacao = new Aplicacao();
+        aplicacao.show();
     }
     
 }

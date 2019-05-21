@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  * @author aluno
  */
 
-public class ProdutoView extends javax.swing.JFrame {
+public class ProdutoView extends javax.swing.JInternalFrame {
     private TipoProdutoController tipo;
     /**
      * Creates new form Produto
@@ -153,7 +153,7 @@ public class ProdutoView extends javax.swing.JFrame {
             ProdutoController pc = new ProdutoController();
             pc.Inserir(novo);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Erro", ERROR);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
