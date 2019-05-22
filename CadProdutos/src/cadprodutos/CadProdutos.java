@@ -1,8 +1,6 @@
 package cadprodutos;
 
 import cadprodutos.views.Aplicacao;
-import cadprodutos.views.ProdutoView;
-import cadprodutos.views.TipoProdutoView;
 
 public class CadProdutos
 {
